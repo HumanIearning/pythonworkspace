@@ -7,3 +7,4 @@
 #random은 0.0 이상 1.0 미만의 임의의값
 
 print("test")
+ eataeateat
