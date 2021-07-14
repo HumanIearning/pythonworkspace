@@ -1,0 +1,25 @@
+{
+    "background.enabled": true,
+  "background.loop": false,
+  "background.useDefault": false,
+  "background.useFront": false,
+  "background.style": {
+
+        "content": "''",
+        "pointer-events": "none",
+        "position": "absolute",
+        "z-index": "99999",
+        "width": "50%",
+        "height": "100%",
+        "margin-left":"0%",
+        "background-position": "right",
+        "background-size": "cover",
+        "background-repeat": "no-repeat",
+        "opacity": 0.1
+    },
+  "background.customImages": [
+
+        "C:/Users/Jeon/OneDrive/Desktop/ALL/사진/p6.jpg",
+    ],
+    "python.pythonPath": "C:\\Users\\user\\anaconda3\\envs\\MyFirstAi\\python.exe",
+}
