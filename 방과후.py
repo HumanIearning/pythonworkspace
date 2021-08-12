@@ -168,10 +168,9 @@ import re
 # ;                   # Trailing semicolon
 # """,re.VERBOSE)     #re.VERBOSE <- 긴 정규식 표현시 공백이나 개행을 인식안해서 오류가 나는데 개행이나 공백 무시하고 매칭해줌 따라서 정규식 설명가능
 
-p5 = re.compile('[\s]ection') # \\ -> \   \s -> 공백으로 인식 so, '\section' 으로 할시 오류 발생  r' '으로 할시 뒤 정규식을 rawstring으로 인식해서 \s 같은 문제 해결 가능
-m5 = p5.search("s ection")
-print(m5)
-
+# p5 = re.compile("\\section") # \\ -> \   \s -> 공백으로 인식 so, '\section' 으로 할시 오류 발생  r' '으로 할시 뒤 정규식을 rawstring으로 인식해서 \s 같은 문제 해결 가능
+# m5 = p5.search("this is \section")
+# print(m5)
 
 
 # p6 = re.compile('Crow|Servo') #|는 or 이라는 의미
@@ -214,8 +213,6 @@ print(m5)
 # p14 = re.compile('(blue|white|red)')
 # m14 = p14.sub('color', 'blue socks and red shoes') # 정규 표현식에 매치되는것을 첫번째 인자로 바꿈
 # print(m14)
-
-
 
 
 
