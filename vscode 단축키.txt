@@ -1,0 +1,32 @@
+ctrl p 빠른 파일열기
+ctrl k f 자동 정렬
+F3 or ctrl f  단어찾기
+ctrl h 단어 교체
+ctrl b 왼쪽 사이드바 껏다 켜기
+ctrl j 하단 패널껏다켜기
+ctrl \ 에디터 분리 
+ctrl shift G git 사이드바 열기
+ctrl shift e  코딩창이랑 왼쪽 파일창이랑 왔다갔다함
+F2 파일 이름 변경
+F12 함수 또는 변수가 선언된 위치로 커서 이동
+F9 break point on/off 
+ctrl F4 현재파일창 닫기
+ctrl shift C 현재파일에 연결된 cmd창 켬
+
+
+ctrl pgup 위 사이드바 기준 왼쪽 파일로이동
+ctrl pgdn 위 사이드바 기준 오른쪽 파일로이동
+ctrl shift pgup 위 사이드바 기준 현재 파일을 왼쪽으로 이동
+ctrl shift pgdn 위 사이드바 기준 현재 파일을 오른쪽으로 이동
+pgup 화면 기준 맨위로 커서이동
+pgdn 화면 기준 맨아래로 커서이동
+shift home 현재줄에서 커서기준 왼쪽 전부 선택
+shift end 현재줄에서 커서기준 오른쪽 전부 선택
+ctrl shift home 커서기준 왼쪽 전부 선택
+ctrl shift end 커서기준 오른쪽 전부 선택
+alt 방향키 현재줄을 위아래로 이동
+alt 좌클릭 커서 여러개 생성
+shift del 현재줄 삭제
+Home 현재줄의 맨앞으로 커서이동
+end 현재줄의 맨뒤로 커서이동
+
