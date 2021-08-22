@@ -86,7 +86,7 @@ import numpy as np
 # a
 # a = np.ones((2,3)) # 매개변수 크기의 1행렬을 만들어줌
 # a
-# a = np.linspace(0,1,4) # 0부터 5까지 5개로 쪼개서 array를 만들어줌
+# a = np.linspace(0,1,4) # 0부터 1까지 4개로 쪼개서 array를 만들어줌
 # a
 # a = np.logspace(0,5,8) 
 # a 
@@ -196,29 +196,53 @@ import numpy as np
 # np.hstack((A1,B1)).reshape((2,3)).transpose()
 
 ## Array 복사,보기
-A = np.array([1,2,3,4,5,6])
-B = A      # 메모리주소 공유
-B.base is A     # False
-B[0] = 99
-## shallow
-B = A.view()
-B is A
-B.base is A     # True
-B.flags.owndata # False
-B[0] = 10
-B.shape = (2,3)
-B[0][1] = 10
-## deep
-B = A.copy()
-B.base is       # False
-B is A          # Fasle
-B.flags.owndata # True  # 갖고있는 데이터가 나의 데이터인지
-id(A)
-id(B)
-B[0] = 9
+# A = np.array([1,2,3,4,5,6])
+# B = A      # 메모리주소 공유
+# B.base is A     # False
+# B[0] = 99
+# ## shallow
+# B = A.view()
+# B is A
+# B.base is A     # True
+# B.flags.owndata # False
+# B[0] = 10
+# B.shape = (2,3)
+# B[0][1] = 10
+# ## deep
+# B = A.copy()
+# B.base is       # False
+# B is A          # Fasle
+# B.flags.owndata # True  # 갖고있는 데이터가 나의 데이터인지
+# id(A)
+# id(B)
+# B[0] = 9
 
 
+## 논리함수
+# a = np.array([10, 0, 20])
+# a.all()  # a안에 있는 값이 모두 참인지 
+# a.any()  # a안에 있는 값 중 하나라도 참인지
+# a.nonzero()  # a에서 0을 뺀 값을 튜플로반환 
+# b = a.nonzero()
+# b = np.array(b).squeeze()
+# np.where(a > 0)   # 조건에 맞는 값의 인덱스를 알려줌
+# np.where(a == 0)
+# np.where(a < 0)
 
+
+## numpy 의 array 도 인덱싱과 슬라이싱 가능
+a = np.array([100,
+              200,
+              300.,
+              400,
+              500])
+a[[2, 3]]
+a[1:3]
+a[::2]
+a[::-1] 
+a[::-2]
+a2 = np.linspace(1,6,6).reshape(2,3)
+a2[:,:]
 
 ## matrix
 ## matrix는 2차원
