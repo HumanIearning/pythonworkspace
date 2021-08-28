@@ -5,13 +5,30 @@ Spyder Editor
 This is a temporary script file.
 """
 ## spyder file임
+## numpy 공부
 ## spyder에선 %reset -f 를 하면 변수선언했던것들을 전부 초기화함
 
 import numpy as np
 
+# numpy의 자료형 array는 행렬 계산을함 e.g) [3,4] * [6,7] == [18, 28]
+# 행렬곱은 np.dot(a,b)
 
+# array는 행렬의 크기가 다른경우에도 사칙연산(dot product는 안됨)이 가능한데
+# e.g)[[1,2],[3,4]] + [5,6] -> [[1,2],[3,4]] + [[5,6],[5,6]]
+# 이를 broadcast라고 칭함
 
-# array = np.arange(10.1) # 매개변수 미만의 정수 리스트를 만듬
+# iterator 라고 반복하는게 있는데 뭔지 잘 모르겟음
+# it = np.nditer(a, flags=['multi_index'], op_flags=['readwrite'])
+# while not it.finished:
+#     idx = it.multi_index
+#     print(a[idx])
+#     it.iternext()
+    
+# loaded_data = np.loadtxt('./data-01.csv', delimeter=',', dtype='float32')
+# data-01.csv에 담긴 데이터를 delimeter 값으로 split해서 array로 갖고옴
+# 머신러닝 코드에서 입력데이터와 정답데이터를 분리하는 프로그래밍 기법
+
+# array = np.arange(10.1) # 매개변수 미만의 정수 리스트를 만듬  # arrange 오타난거아님 arange 맞음
 # array
 
 # a = np.array([[10, 20, 30],[1., 2., 3.]])  # 리스트(# tuple도 됨)를 numpy의 array로 만듬
@@ -81,15 +98,22 @@ import numpy as np
 # a
 
 
+
+
+
 ## array 자동생성
 # a = np.zeros([2,3]) # 매개변수 크기의 영행렬을 만들어줌 # tuple도 됨
 # a
 # a = np.ones((2,3)) # 매개변수 크기의 1행렬을 만들어줌
 # a
+# np.zeros(a,b) a by b의 영행렬을 만듬
 # a = np.linspace(0,1,4) # 0부터 1까지 4개로 쪼개서 array를 만들어줌
 # a
 # a = np.logspace(0,5,8) 
 # a 
+# 위의 arange도 있음
+# np.random.rand(a,b) # 0부터 1까지의 임의의실수로 a by b 행렬을 만듬 
+
 
 
 ## array는 element-wise operation 을 사용함
@@ -104,6 +128,7 @@ import numpy as np
 # c = c**4    
 # # np.divmode(a,b) # 몫array와 나머지array를 각각 반환
 # # c = np.exp(a)  # 자연상수e의 a제곱 한것을 반환
+# np.log(a) # a의 e에 대한 log값을 반환   # e^np.log(a) = a 의 log형
 # # np.sqrt([4, -1, -3+4J]) # 허수로 반환
 # # np.sqrt([4, -1, np.inf]) # nan, inf로 반환
 # a += b # int = int + float 는 되지만 int += float 는 안됨 float += int는됨
@@ -111,6 +136,8 @@ import numpy as np
 
 # logic = b >= 5 # bool값들이 리스트로 저장됨
 # logic
+
+
 
 
 ## array 통계 함수
@@ -129,13 +156,15 @@ import numpy as np
 # np.var(a)
 
 
+
+
 ## array 정렬 함수
 # x = np.array([10 ,15, 0, 5, 20])
 # y = np.array([-1, -5, 6, 7])
 # x.sum() # 원소들의합
 # x.min()  # 최솟값
 # x.argmin() # 최솟값이 위치한 인덱스
-# x.max()
+# x.max(a,axis=1)  # 행 기준인지 열 기준인지 정할수있음 axis가 0이면 열기준 
 # x.argmax()
 # x.ptp # peak to peak # max - min
 # x.sort()  # 바로 업데이트됨
@@ -143,6 +172,8 @@ import numpy as np
 # x.argsort # x의 정렬되기 전 값들의 인덱스
 # x.searchsorted(x,y) # y의 각원소들이 x의 어디 인덱스에 들어가야 정렬이 유지 되는지 알려줌 
 # # x가 정렬 되어있지 않을경우 값이 다르게 나옴
+
+
 
 
 ## array 수정 함수
@@ -156,6 +187,7 @@ import numpy as np
 # np.repeat(c, [1, 2], axis = 0) # 아래로 c[0][*] 는 1번반복 c[1][*]는 2번반복 
 # np.repeat(c, [1, 2, 3], axis = 1) # 옆으로 c[*][0]은 1번 반복 c[*][1]는 2번반복 c[*][2]는 3번반복
 
+# array서로 연결해주기 list의 append 같은 느
 # c = np.concatenate((a,b), axis = 1) # 매개변수로 들어갈 array들을 tuple로 묶어서 보내줘야함 # a,b를 연결해줌 
 
 # c = np.hstack((a,b)) # concatenate axis = 1
@@ -163,7 +195,7 @@ import numpy as np
 
 # c = np.hsplit(c,5) # horizon split 세로로 자름
 # c = np.vsplit(c,2) # vertical split 가로로 자름
-# # array들을 원소로같는 list형태의 데이터로 반환
+# # array들을 원소로갖는 list형태의 데이터로 반환
 
 # c = np.transpose(c) # 전치
 
@@ -195,6 +227,9 @@ import numpy as np
 
 # np.hstack((A1,B1)).reshape((2,3)).transpose()
 
+
+
+
 ## Array 복사,보기
 # A = np.array([1,2,3,4,5,6])
 # B = A      # 메모리주소 공유
@@ -216,6 +251,8 @@ import numpy as np
 # id(A)
 # id(B)
 # B[0] = 9
+
+
 
 
 ## 논리함수
