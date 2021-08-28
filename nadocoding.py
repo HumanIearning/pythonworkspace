@@ -222,8 +222,8 @@ class tank(attackunit):
         #현재 시즈모드 일 때
         else:print("{0} : 시즈모드를 해제합니다."\
                 .format(self.name))
-            self.damage /= 2
-            self.seize_mode = False
+        self.damage /= 2
+        self.seize_mode = False
         
 
     def __init__(self):
