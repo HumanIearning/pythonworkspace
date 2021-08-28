@@ -4,6 +4,6 @@
 import numpy as np
 import math
 
-x = np.array([10,20,30]) #-> pandas의 시리즈 처럼 리스트를 array로 변환
-x2 = x**2
-print(x2)
+# x = np.array([10,20,30]) -> pandas의 시리즈 처럼 리스트를 array로 변환
+# x2 = x**2   array의 장점 : element-wise operation(원소 연산)이 가능함
+# print(x2)
