@@ -28,8 +28,6 @@ import numpy as np
 # data-01.csv에 담긴 데이터를 delimeter 값으로 split해서 array로 갖고옴
 # 머신러닝 코드에서 입력데이터와 정답데이터를 분리하는 프로그래밍 기법
 
-# array = np.arange(10.1) # 매개변수 미만의 정수 리스트를 만듬  # arrange 오타난거아님 arange 맞음
-# array
 
 # a = np.array([[10, 20, 30],[1., 2., 3.]])  # 리스트(# tuple도 됨)를 numpy의 array로 만듬
 # a
@@ -106,15 +104,17 @@ import numpy as np
 # a
 # a = np.ones((2,3)) # 매개변수 크기의 1행렬을 만들어줌
 # a
-# np.zeros(a,b) a by b의 영행렬을 만듬
 # a = np.linspace(0,1,4) # 0부터 1까지 4개로 쪼개서 array를 만들어줌
 # a
 # a = np.logspace(0,5,8) 
 # a 
-# 위의 arange도 있음
+# array = np.arange(10.1) # 매개변수 미만의 정수 리스트를 만듬  # arrange 오타난거아님 arange 맞음
+# array
+# np.random.randint(1,100,5) # 1~100 사이의 5개의 무작위정수 생성
 # np.random.rand(a,b) # 0부터 1까지의 임의의실수로 a by b 행렬을 만듬 
-
-
+# np.random.randn(a,b) # 0부터 1까지의 표준 정규분포를 이루는 임의의실수로 a by b 행렬을 만듬 
+# np.random.normal(평균, 표준편차, 행렬크기) # 평균과 표준편차를 지정할수있음
+# np.random.seed(0) # random함수의 seed를 고정해 random 함수로 나오는 값들이 동일해진다
 
 ## array는 element-wise operation 을 사용함
 ## 즉 array끼리 연산식 각 원소들끼리 게산함
