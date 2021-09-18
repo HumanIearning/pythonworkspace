@@ -180,6 +180,7 @@ import numpy as np
 # a = np.array([[5,10,15,20,25]])
 # b = np.array([[-5,-10,-15,-20,-25]])
 
+# array = np.append(array,3) # array에 3 넣음 리스트.append와 동일
 # a = a.reshape(2,3) # a의 size와 2*3이 일치하지않을경우 오류
 # c = np.linspace(1,10,6).reshape(2,3)
 # c = c.astype('int64')
@@ -187,7 +188,7 @@ import numpy as np
 # np.repeat(c, [1, 2], axis = 0) # 아래로 c[0][*] 는 1번반복 c[1][*]는 2번반복 
 # np.repeat(c, [1, 2, 3], axis = 1) # 옆으로 c[*][0]은 1번 반복 c[*][1]는 2번반복 c[*][2]는 3번반복
 
-# array서로 연결해주기 list의 append 같은 느
+# array서로 연결해주기 list의 append 같은 느낌
 # c = np.concatenate((a,b), axis = 1) # 매개변수로 들어갈 array들을 tuple로 묶어서 보내줘야함 # a,b를 연결해줌 
 
 # c = np.hstack((a,b)) # concatenate axis = 1
@@ -230,6 +231,7 @@ import numpy as np
 
 
 
+
 ## Array 복사,보기
 # A = np.array([1,2,3,4,5,6])
 # B = A      # 메모리주소 공유
@@ -255,6 +257,7 @@ import numpy as np
 
 
 
+
 ## 논리함수
 # a = np.array([10, 0, 20])
 # a.all()  # a안에 있는 값이 모두 참인지 
@@ -267,19 +270,25 @@ import numpy as np
 # np.where(a < 0)
 
 
+
+
 ## numpy 의 array 도 인덱싱과 슬라이싱 가능
-a = np.array([100,
-              200,
-              300.,
-              400,
-              500])
-a[[2, 3]]
-a[1:3]
-a[::2]
-a[::-1] 
-a[::-2]
-a2 = np.linspace(1,6,6).reshape(2,3)
-a2[:,:]
+# a = np.array([100,
+#               200,
+#               300.,
+#               400,
+#               500])
+# a[[2, 3]]
+# a[1:3]
+# a[::2]
+# a[::-1] 
+# a[::-2]
+# a2 = np.linspace(1,6,6).reshape(2,3)
+# a2[:,:]
+
+
+
+
 
 ## matrix
 ## matrix는 2차원
@@ -292,9 +301,61 @@ a2[:,:]
  
 
 
+# 선형대수 함수
+# M = np.array([[10,20], [30,40]])
+# N = np.array([[1,2], [3,4]])
+
+# M*N
+
+# M@N # 행렬곱
+# M.dot(N)
+
+# a = np.zeros((3,3))
+# b = np.ones((3,3))
+
+# c = np.trace(b) # 주대각선에 있는 값들을 더해줌
+
+# # M@x = y
+# M = np.array([[1,3],[6,7]])
+# y = np.array([[4],[2]])
+
+# M_inv = np.linalg.inv(M) # 정사각행렬만됨
+# x = M_inv.dot(y)
+# x = np.linalg.solve(M,y)  # 위 두줄을 한번에 해줌
+
+# np.linalg.eig(M) # 고윳값
+
+# np.linalg.svd(M) # singular value decomposition 특이값 분해
+
+# np.fill_diagonal(x,100) # 주대각선을 100으로 채워넣음, 바로업데이트됨
 
 
 
 
+
+# 브로드캐스팅 broadcasting
+# a = np.linspace(1,9,9)*10
+# a= a.reshape(3,3)
+# b = np.arange(3).reshape(3,1)+1
+
+# b = b.repeat(3,axis=1)
+# a*b
+
+
+
+
+# function usage example
+def f(x,y):
+    return x+y
+b = np.fromfunction(f, (5,4), dtype=int)
+
+
+
+
+# set
+# a = np.array([1,2,3,4,5])
+# b = np.array([3,5])
+# np.setdiff1d(a,b)
+# array의 set 다른 set함수도있음
 
 

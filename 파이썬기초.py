@@ -187,6 +187,8 @@
 
 ##################################################################################
 
+# for i in dic  할경우 키값을 받아옴
+
 # dic = {'A' : 1, 'B' : 2}
 # print(dic['B'])
 # print(dic.get('A'))
@@ -204,6 +206,9 @@
 
 # dic.clear() -> list와 똑같이 빈딕셔너리로 만듬
 
+# dic.items    키, 값
+# dic.keys()   키
+# dic.values() 값
 ##################################################################################
 
 # list = [1, 2, 3, 4, 5]
@@ -358,3 +363,45 @@ import pickle   ## pickle 을 쓰는 이유? 아스키코드가아닌 이진법�
 # f = open('file.txt', 'rb') ## 그냥 r로 쓰면 dump 나 load할때 오류 발생
 # x = pickle.load(f)
 # print(x)
+
+
+import time
+# time.sleep(0.1)
+
+
+
+# # iter
+# x_str = 'abc'
+# x_iter = iter(x_str)
+# print(next(x_iter))
+# print(next(x_iter))
+# print(next(x_iter))
+
+
+
+# # enumerate
+# import numpy as np
+# for cnt, j in enumerate(np.array([10,20,30,40]), start = 1):
+#     print(cnt)
+#     print(j)
+
+
+# # zip
+# arr = np.array([10,20,30,40])     
+# name = ['newton','kepler','euler']
+# for i in zip(arr,name):       # 40은 안나옴
+#     print(i)       # tuple 로 감싸져서 나옴
+
+one = 1
+x = 1
+e = 0
+while True:
+    x /= 2
+    e = (one + x)**(1/x)
+    print(e)
+    time.sleep(0.5)
+    if e == 1.0:
+        print(x)
+        break
+    
+
