@@ -392,6 +392,8 @@ import time
 # for i in zip(arr,name):       # 40은 안나옴
 #     print(i)       # tuple 로 감싸져서 나옴
 
+
+# Euler's number
 one = 1
 x = 1
 e = 0
@@ -404,4 +406,207 @@ while True:
         print(x)
         break
     
+
+
+
+##############################################################################
+# try and except
+age = int(input('enter age : '))
+print('Age = {}'.format(age))
+
+while True:
+    try:
+        age = int(input('enter age : '))
+        print(age)
+        break
+    except ValueError:
+        print("input number")
+    except:
+        print('Exception error occured')
+
+############################################################
+# just error in lecture
+
+database = {'u1':'aaa',
+            'u2':'bbb',
+            'u3':'ccc'}
+
+user_id = 'u1'
+user_pw = 'bbb'
+
+if(user_id in database.keys() and user_pw in database.values()):
+    print('log in')
+else:
+    print('not in database')
+
+###############################################################
+#list comprehension
+
+i = [i for i in range(10)]
+i = [x for x in range(11)
+     if x%2==0
+     if x%5==0
+     ]
+even_or_odd = ['even' if i%2==0 else 'odd' for i in range(21)]
+
+# dictionary comprehension
+sqr = {x:x**2 if x%2==0 else x for x in range(10)}
+###############################################################
+# file manage practice
+import os, sys # 모듈 가져오기
+
+print(os.getcwd())  # 현재 위치한 파일주소
+os.mkdir('my_dir')   # 폴더 하나를 만듬
+os.chdir('.\my_dir')  # 하위폴더중 하나인 my_dir로 이동
+for i in range(20):    # file+숫자라는 이름의 파일들을 만듬
+     f = open('file'+str(i), 'w')
+     f.close()
+flist = os.listdir('.')  # 하위 파일,폴더들 이름을 반환  . 을 매개변수로 줄시 현재 파일주소를 의미함
+
+for fid in flist:    
+    f_name = fid[0:4] # 파일이름의 앞 네글자, file이 들어감
+    f_num = fid[4:]   # 파일이름뒤의 숫자 0~19가 들어감
+    if int(f_num) < 10: # 파일이름에 0~9는 앞에 2019_를
+        os.replace(fid,'2019_'+fid)
+    else:               # 10~19는 앞에 2020_을 붙여줌
+        os.replace(fid,'2020_'+fid)
+
+os.mkdir('2019_data') # 폴더만듬
+os.mkdir('2020_data')
+
+flist = os.listdir('.') 
+
+# filter - method 1
+from itertools import compress
+idx = list(map(lambda x: 'file' in x,flist))
+flist2 = list(compress(flist, idx))
+
+# filter - method 2
+flist3 = list(filter(lambda x: 'file' in x,flist))
+
+# filter - method 3
+flist4 = [x for x in flist if 'file' in x]
+
+# filter - method 4
+import glob
+glob.glob('2019_file?')  # ? = 문자하나
+glob.glob('2019_file[1,4,5]') # [1,4,5] 정규식이랑 같음
+glob.glob('*file*')   # * = 정규식에서의 .
+
+# move files
+import shutil
+for f_curr in flist4 :
+    f_name = f_curr[0:9]
+    f_num = f_curr[9:]
+    if int(f_num) < 10:
+        shutil.move(f_curr, '.\\2019_data') # 2019파일 이동
+    else:
+        shutil.move(f_curr, '.\\2020_data') # 2020파일이동
+##############################################################################
+
+
+def add10(x):
+    global y
+    y = x+10
+    return y
+
+print(add10(3))
+y
+
+
+
+def f(*arg):  # 매개변수를 한번에 튜플로 받아옴
+    print(arg)
+f('af',43,'bb')
+
+def my_add(*args):
+    total = 0
+    for i in args:
+        total += i
+    return total
+my_add(1,2,3)
+
+def concat(*arg):
+    combined = str()
+    for a in arg:
+        combined += a
+    return combined
+concat('py','th','on')
+
+
+
+
+a = [1,20,1]
+range(*a)
+
+def sqr(x:float,y:float)->float: # -> 뒤는 반환값의  자료형
+    """
+    
+
+    Parameters
+    ----------
+    x : FLOAT
+        밑
+    y : FLOAT
+        지수
+
+    Returns
+    -------
+    result : FLOAT
+        x의y제곱
+
+    """
+    result = x**y
+    return result
+
+
+print(sqr.__doc__)
+print(sqr.__annotations__)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
