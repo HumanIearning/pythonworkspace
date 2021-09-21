@@ -393,209 +393,255 @@ import time
 #     print(i)       # tuple 로 감싸져서 나옴
 
 
-# Euler's number
-one = 1
-x = 1
-e = 0
-while True:
-    x /= 2
-    e = (one + x)**(1/x)
-    print(e)
-    time.sleep(0.5)
-    if e == 1.0:
-        print(x)
-        break
+# # Euler's number
+# one = 1
+# x = 1
+# e = 0
+# while True:
+#     x /= 2
+#     e = (one + x)**(1/x)
+#     print(e)
+#     time.sleep(0.5)
+#     if e == 1.0:
+#         print(x)
+#         break
     
 
 
 
-##############################################################################
-# try and except
-age = int(input('enter age : '))
-print('Age = {}'.format(age))
-
-while True:
-    try:
-        age = int(input('enter age : '))
-        print(age)
-        break
-    except ValueError:
-        print("input number")
-    except:
-        print('Exception error occured')
-
-############################################################
-# just error in lecture
-
-database = {'u1':'aaa',
-            'u2':'bbb',
-            'u3':'ccc'}
-
-user_id = 'u1'
-user_pw = 'bbb'
-
-if(user_id in database.keys() and user_pw in database.values()):
-    print('log in')
-else:
-    print('not in database')
-
-###############################################################
-#list comprehension
-
-i = [i for i in range(10)]
-i = [x for x in range(11)
-     if x%2==0
-     if x%5==0
-     ]
-even_or_odd = ['even' if i%2==0 else 'odd' for i in range(21)]
-
-# dictionary comprehension
-sqr = {x:x**2 if x%2==0 else x for x in range(10)}
-###############################################################
-# file manage practice
-import os, sys # 모듈 가져오기
-
-print(os.getcwd())  # 현재 위치한 파일주소
-os.mkdir('my_dir')   # 폴더 하나를 만듬
-os.chdir('.\my_dir')  # 하위폴더중 하나인 my_dir로 이동
-for i in range(20):    # file+숫자라는 이름의 파일들을 만듬
-     f = open('file'+str(i), 'w')
-     f.close()
-flist = os.listdir('.')  # 하위 파일,폴더들 이름을 반환  . 을 매개변수로 줄시 현재 파일주소를 의미함
-
-for fid in flist:    
-    f_name = fid[0:4] # 파일이름의 앞 네글자, file이 들어감
-    f_num = fid[4:]   # 파일이름뒤의 숫자 0~19가 들어감
-    if int(f_num) < 10: # 파일이름에 0~9는 앞에 2019_를
-        os.replace(fid,'2019_'+fid)
-    else:               # 10~19는 앞에 2020_을 붙여줌
-        os.replace(fid,'2020_'+fid)
+# ##############################################################################
+# # try and except
+# age = int(input('enter age : '))
+# print('Age = {}'.format(age))
+
+# while True:
+#     try:
+#         age = int(input('enter age : '))
+#         print(age)
+#         break
+#     except ValueError:
+#         print("input number")
+#     except:
+#         print('Exception error occured')
+
+# ############################################################
+# # just error in lecture
+
+# database = {'u1':'aaa',
+#             'u2':'bbb',
+#             'u3':'ccc'}
+
+# user_id = 'u1'
+# user_pw = 'bbb'
+
+# if(user_id in database.keys() and user_pw in database.values()):
+#     print('log in')
+# else:
+#     print('not in database')
+
+# ###############################################################
+# #list comprehension
+
+# i = [i for i in range(10)]
+# i = [x for x in range(11)
+#      if x%2==0
+#      if x%5==0
+#      ]
+# even_or_odd = ['even' if i%2==0 else 'odd' for i in range(21)]
+
+# # dictionary comprehension
+# sqr = {x:x**2 if x%2==0 else x for x in range(10)}
+# ###############################################################
+# # file manage practice
+# import os, sys # 모듈 가져오기
+
+# print(os.getcwd())  # 현재 위치한 파일주소
+# os.mkdir('my_dir')   # 폴더 하나를 만듬
+# os.chdir('.\my_dir')  # 하위폴더중 하나인 my_dir로 이동
+# for i in range(20):    # file+숫자라는 이름의 파일들을 만듬
+#      f = open('file'+str(i), 'w')
+#      f.close()
+# flist = os.listdir('.')  # 하위 파일,폴더들 이름을 반환  . 을 매개변수로 줄시 현재 파일주소를 의미함
+
+# for fid in flist:    
+#     f_name = fid[0:4] # 파일이름의 앞 네글자, file이 들어감
+#     f_num = fid[4:]   # 파일이름뒤의 숫자 0~19가 들어감
+#     if int(f_num) < 10: # 파일이름에 0~9는 앞에 2019_를
+#         os.replace(fid,'2019_'+fid)
+#     else:               # 10~19는 앞에 2020_을 붙여줌
+#         os.replace(fid,'2020_'+fid)
+
+# os.mkdir('2019_data') # 폴더만듬
+# os.mkdir('2020_data')
+
+# flist = os.listdir('.') 
+
+# # filter - method 1
+# from itertools import compress
+# idx = list(map(lambda x: 'file' in x,flist))
+# flist2 = list(compress(flist, idx))
+
+# # filter - method 2
+# flist3 = list(filter(lambda x: 'file' in x,flist))
+
+# # filter - method 3
+# flist4 = [x for x in flist if 'file' in x]
+
+# # filter - method 4
+# import glob
+# glob.glob('2019_file?')  # ? = 문자하나
+# glob.glob('2019_file[1,4,5]') # [1,4,5] 정규식이랑 같음
+# glob.glob('*file*')   # * = 정규식에서의 .
 
-os.mkdir('2019_data') # 폴더만듬
-os.mkdir('2020_data')
+# # move files
+# import shutil
+# for f_curr in flist4 :
+#     f_name = f_curr[0:9]
+#     f_num = f_curr[9:]
+#     if int(f_num) < 10:
+#         shutil.move(f_curr, '.\\2019_data') # 2019파일 이동
+#     else:
+#         shutil.move(f_curr, '.\\2020_data') # 2020파일이동
+# ##############################################################################
 
-flist = os.listdir('.') 
 
-# filter - method 1
-from itertools import compress
-idx = list(map(lambda x: 'file' in x,flist))
-flist2 = list(compress(flist, idx))
+# def add10(x):
+#     global y
+#     y = x+10
+#     return y
 
-# filter - method 2
-flist3 = list(filter(lambda x: 'file' in x,flist))
+# print(add10(3))
+# y
 
-# filter - method 3
-flist4 = [x for x in flist if 'file' in x]
 
-# filter - method 4
-import glob
-glob.glob('2019_file?')  # ? = 문자하나
-glob.glob('2019_file[1,4,5]') # [1,4,5] 정규식이랑 같음
-glob.glob('*file*')   # * = 정규식에서의 .
 
-# move files
-import shutil
-for f_curr in flist4 :
-    f_name = f_curr[0:9]
-    f_num = f_curr[9:]
-    if int(f_num) < 10:
-        shutil.move(f_curr, '.\\2019_data') # 2019파일 이동
-    else:
-        shutil.move(f_curr, '.\\2020_data') # 2020파일이동
-##############################################################################
+# def f(*arg, last):  # 매개변수를 한번에 튜플로 받아옴, 정해지지않은 배열같은 느낌 
+#     print(arg)
+#     print(last)
+# f('af',43,last='bb')
 
+# def my_add(*args):
+#     total = 0
+#     for i in args:
+#         total += i
+#     return total
+# my_add(1,2,3)
 
-def add10(x):
-    global y
-    y = x+10
-    return y
+# def concat(*arg):
+#     combined = str()
+#     for a in arg:
+#         combined += a
+#     return combined
+# concat('py','th','on')
 
-print(add10(3))
-y
 
 
 
-def f(*arg):  # 매개변수를 한번에 튜플로 받아옴
-    print(arg)
-f('af',43,'bb')
+# a = [1,20,1]
+# range(*a)
 
-def my_add(*args):
-    total = 0
-    for i in args:
-        total += i
-    return total
-my_add(1,2,3)
+# # help(함수) 
+# def sqr(x:float,y:float)->float: # -> 뒤는 반환값의  자료형
+#     """
 
-def concat(*arg):
-    combined = str()
-    for a in arg:
-        combined += a
-    return combined
-concat('py','th','on')
+#     Parameters
+#     ----------
+#     x : FLOAT
+#         밑
+#     y : FLOAT
+#         지수
 
+#     Returns
+#     -------
+#     result : FLOAT
+#         x의y제곱
 
+#     """
+#     result = x**y
+#     return result
 
 
-a = [1,20,1]
-range(*a)
+# print(sqr.__doc__)
+# print(sqr.__annotations__)
 
-def sqr(x:float,y:float)->float: # -> 뒤는 반환값의  자료형
-    """
-    
 
-    Parameters
-    ----------
-    x : FLOAT
-        밑
-    y : FLOAT
-        지수
 
-    Returns
-    -------
-    result : FLOAT
-        x의y제곱
+# add_one = lambda x: x+1
+# add_one(10) 
+# (lambda x: x+1)(10)
+# (lambda x: print(x**2))(10)
 
-    """
-    result = x**y
-    return result
 
+# def add_10(x):
+#     return x+10
 
-print(sqr.__doc__)
-print(sqr.__annotations__)
+# high_ord_fn = lambda x: x+add_10(x)
+# high_ord_fn(2)
 
+# high_ord_fn = lambda x, f : x+ f(x)
+# high_ord_fn(2, lambda x : x+1)
 
+# # map()   # iterator한 변수에서 각 인덱스에 접근할수 있게 해주는 함수
+# import numpy as np
 
+# a = np.array([1,2,3,4,5])
+# a*2
 
+# a = [1,2,3,4,5]
+# a*2
+# map(lambda x:x*2,a) # 당연히 람다말고 함수 이름을 넣는것도 가능
+# list(map(lambda x:x*2,a))
 
 
+# vip = 'euler'
+# vip.upper()
+# vip_list = ['kepler','newtion','euler']
+# list(map(lambda x: x.upper(),vip_list))
 
+# len(vip_list[0])
+# len(vip_list[2])
+# list(map(lambda x: len(x),vip_list))
 
 
+# # filter
+# list(filter(lambda x: 'p' in x, vip_list))
 
+# y = [0,1,2,3,4,5]
+# list(filter(lambda x: x%2==0, y))
+# list(filter(lambda x: False, y))
+# list(filter(lambda x: x == False, y))
 
+# # reduce
+# from functools import reduce
+# def add(x,y):
+#     return x+y
+# reduce(add,y)
 
+# reduce(lambda a,b:a+b, y)
 
+# str_list = ['p','y','t','h','o','n']
+# reduce(lambda x,y:x+y, str_list)
 
 
+# # list comprehension vs lambda function
 
+# letter_list = [] 
+# for letter in 'python':         # for문
+#     letter_list.append(letter)
+# print(letter_list)
 
+# letter_list2 = [                   # list comprehension
+#     letter for letter in 'python'
+#     ]
 
+# list(map(lambda x: x,'python'))   # lambda
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+# # 라이브러리를 가져오고싶은데 라이브러리가 같은 위치에 있지 않을경우에 쓸수있는 방
+# import sys      
+# sys.path
+# sys.path.apeend('주소')
 
 
 
