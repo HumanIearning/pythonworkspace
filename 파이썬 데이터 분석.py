@@ -91,26 +91,77 @@ plt.imshow(M_hz)
 
 # dim
 M_hz = (M_hz/255)*0.5
-plt.imshow(M_hz)
+plt.imshow(M_hz)     # 값을 0~1 사이나 1~255 사이로 아무거나 해도 알아서 imshow가 알아서 맞춰줌
 
+# checkerboard image
+M = np.zeros((5,5,3))
+plt.imshow(M)
 
+# turn into white
+# M[:,:,:]=0.1 
+M[:]=1
+plt.imshow(M)
 
+# turn into black
+M[:]=0
+plt.imshow(M)
 
+# checkerboard
+M[0::2,0::2,:]=1
+plt.imshow(M)
+M[1::2,1::2,:]=1
+plt.imshow(M)
 
+# copy
+N = M.copy()
+idx = np.where(N==1)
+N[idx] = 0.5
+plt.imshow(N)
 
+# change black to white
+idx = np.where(N<0.1)
+N[idx]=1
+plt.imshow(N)
 
+# copy again
+N = M.copy()
+plt.imshow(N)
 
+# color inverse
+idx_w = np.where(N==1)
+idx_b = np.where(N==0)
+N[idx_w] = 0
+N[idx_b] = 1
+plt.imshow(N)
 
+# change white to green
+idx1 = np.where(N==1)
+N[idx1[0],idx1[1],0]=0
+N[idx1[0],idx1[1],2]=0
+plt.imshow(N)
 
+# change black to red
+flag_r = (N[:,:,0]==0)
+flag_g = (N[:,:,1]==0)
+flag_b = (N[:,:,2]==0)
 
+flag_blk = flag_r and flag_g and flag_b
+idx_blk = np.where(flag_blk)
+N[idx_blk[0],idx_blk[1],0] = 1
+plt.imshow(N)
 
+# another way
+N = M.copy()
 
+N_sum = np.sum(N,axis=2)
+idx_blk = np.where(N_sum == 0)
+N[idx_blk[0],idx_blk[1],0]=1
+plt.imshow(N)
 
-
-
-
-
-
+# change diagonal to green
+np.fill_diagonal(N[:,:,0],0)
+np.fill_diagonal(N[:,:,1],1)
+np.fill_diagonal(N[:,:,2],0)
 
 
 
