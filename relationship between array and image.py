@@ -145,7 +145,7 @@ flag_r = (N[:,:,0]==0)
 flag_g = (N[:,:,1]==0)
 flag_b = (N[:,:,2]==0)
 
-flag_blk = flag_r and flag_g and flag_b
+flag_blk = flag_r & flag_g & flag_b
 idx_blk = np.where(flag_blk)
 N[idx_blk[0],idx_blk[1],0] = 1
 plt.imshow(N)
@@ -162,11 +162,17 @@ plt.imshow(N)
 np.fill_diagonal(N[:,:,0],0)
 np.fill_diagonal(N[:,:,1],1)
 np.fill_diagonal(N[:,:,2],0)
+plt.imshow(N)
 
+# jet scale
+M = np.linspace(0,1,10)
+M = M[:,np.newaxis]
+M = np.repeat(M,10,axis=1)
+plt.imshow(M,cmap='jet')
 
-
-
-
+# transpose
+M_tr = np.transpose(M)
+plt.imshow(M_tr,cmap='gray')
 
 
 
