@@ -8,8 +8,8 @@ Created on Thu Sep 16 11:33:14 2021
 
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy import interpolate
-%matplotlib QT5
+from scypy import interpolate
+# %matplotlib QT5
 # QT5
 
 x = np.array([1,2,3,4,5])
